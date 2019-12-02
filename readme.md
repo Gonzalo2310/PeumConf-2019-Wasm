@@ -30,7 +30,7 @@ Como obtener, configurar y usar Emscripten de modo genérico se deben seguir las
 
 Carpetas: 
 
-Sliders:  Sliders en un archivo .odp (libreoffice) y el mismo contenido en pdf.
+Sliders:  Sliders en un archivo .odp (libreoffice) y el mismo contenido en pdf. [Online](https://docs.google.com/presentation/d/1RErP39QH7Xj01XUmZUVHu8hgVh9TYBWWkiWS7sq-RQ8/edit?usp=sharing)
 
 holamundo: El ejemplo mas sencillo. Hello world por consola.
 
