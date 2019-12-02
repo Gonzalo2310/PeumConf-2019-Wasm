@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>WebAssembly Example</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+<div id="contenido"></div>
+<script src="index.js"></script>
+<script>
+  function allReady() {
+    const instance = new Module.PeumClass(10, "Conferencia Peum 2020");
+    console.log('valores originales: ')
+    console.log({
+      x: instance.x,
+      texto: Module.PeumClass.getStringFromInstance(instance)
+    })
+    instance.incrementX()
+    console.log('Despues del incrementX: ')
+    console.log({
+      x: instance.x,
+      texto: Module.PeumClass.getStringFromInstance(instance)
+    })
+    instance.x = 20
+    console.log('Despues de la asignacion: ')
+    console.log({
+      x: instance.x,
+      texto: Module.PeumClass.getStringFromInstance(instance)
+    })
+    console.log('Resto de dividir X entre 3: ', instance.restX(3))
+    instance.delete()
+
+  }
+</script>
+</body>
+</html>
+
+

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>WebAssembly Example</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+<div id="contenido"></div>
+<script src="index.js"></script>
+<script>
+  function toFloatArr(arr) {
+    const res = new Float32Array(arr.length)
+    for (let i=0; i < arr.length; i++)
+      res[i] = arr[i]
+    return res
+  }
+  function transferToHeap(arr) {
+    const floatArray = toFloatArr(arr)
+    const heapSpace = Module._malloc(floatArray.length *
+      floatArray.BYTES_PER_ELEMENT)
+    Module.HEAPF32.set(floatArray, heapSpace >> 2)
+    return heapSpace
+  }
+  function sumUp(arr) {
+    let arrayOnHeap
+    try {
+      arrayOnHeap = transferToHeap(arr)
+      return Module._sum_up(arrayOnHeap, arr.length)
+    } finally {
+      Module._free(arrayOnHeap)
+    }
+  }
+  function allReady() {
+    console.log(
+      sumUp([1.0, 2.0, 3.0, 4.0, 5.0, 6.0])
+    );
+  }
+</script>
+</body>
+</html>
+ <!--
+https://medium.com/@tdeniffel/c-to-webassembly-pass-and-arrays-to-c-86e0cb0464f5
+ -->
+

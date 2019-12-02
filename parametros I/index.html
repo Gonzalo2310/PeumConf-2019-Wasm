@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>WebAssembly Example</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+<div id="contenido"></div>
+<script src="index.js"></script>
+<script>
+  function allReady() {
+    const element = document.getElementById('contenido')
+    /********* Formas de usar la funcion de c++ **********/
+    // const roll = Module.ccall('limits', 'number', ['number'], [110]) //  llamada incluyendo el parámetro
+    // const contentText = document.createTextNode(roll + '') // uso directo
+    // const roll = Module.cwrap('limits', 'number', ['number'] ) // creando una funcion reutilizable
+    // const contentText = document.createTextNode(roll(110) + '') // Uso como funcion
+
+
+    //const roll = _limits // La forma mas sencilla de llamar a la funcion y usar los parametros
+    //const contentText = document.createTextNode(roll(110) + '') // Uso como funcion
+
+
+    const roll = _limits(150) // forma sencilla de llamar a la funcion con un parametro predefinido
+    const contentText = document.createTextNode(roll + '') // Uso directo
+    element.appendChild(contentText)
+  }
+</script>
+</body>
+</html>
+
